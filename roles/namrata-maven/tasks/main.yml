@@ -1,0 +1,28 @@
+---
+# tasks file for namrata-maven
+#
+#- hosts: all
+#become: yes
+#tasks:
+  - name: update
+    apt: update_cache=yes
+    ignore_errors: yes
+
+  - name: install JDK
+    shell: sudo apt install openjdk-11-jdk -y
+
+  - name: installing maven
+    apt: name=maven state=latest
+
+  - name: from github
+    shell: git clone https://github.com/namrata4447/S3Maven.git
+
+  - name: mvn clean install
+    command: "mvn clean install"
+    register: mvn_result
+    args:
+        chdir: /home/ubuntu/S3Maven/mavenwebapp/trucks
+
+  - name: "mvn clean task output"
+    debug:
+         var: mvn_result

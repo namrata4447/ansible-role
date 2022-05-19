@@ -1,0 +1,9 @@
+---
+# vars file for namrata-jenkins
+
+#java var
+java_pkg: "openjdk-11-jdk"
+
+#jenkins var
+jenkins:
+        jenkins_key: "https://pkg.jenkins.io/debian-stable/jenkins.io.key"
